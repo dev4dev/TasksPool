@@ -9,16 +9,16 @@ public protocol TaskPoollable {
 }
 
 private enum TPKey {
-    static var tasksPooll = 0
+    static var tasksPools = 0
 }
 
 public extension TaskPoollable where Self: AnyObject {
     private var __tasksPools: [TasksPool] {
         get {
-            (objc_getAssociatedObject(self, &TPKey.tasksPooll) as? [TasksPool]) ?? []
+            (objc_getAssociatedObject(self, &TPKey.tasksPools) as? [TasksPool]) ?? []
         }
         set {
-            objc_setAssociatedObject(self, &TPKey.tasksPooll, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &TPKey.tasksPools, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 
